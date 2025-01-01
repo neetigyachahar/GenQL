@@ -1,0 +1,73 @@
+<article className="py-10 mx-auto min-w-96 prose prose-slate dark:prose-invert">
+
+## Extract schema from database
+
+[Download](./schema-sample.csv) sample file.
+
+Since creating the schema in JSON format from the database can be a manual complicated process,
+You can simply run the below SQL query to get the schema information and save it in a CSV file.
+
+**Note**: This query is for Postgres. You can convert it for other databases using gen AI.
+
+```sql
+SELECT
+    c.table_name AS table_name,
+    NULL AS column_name,  -- Set column_name to NULL for table-level comments
+    NULL AS is_nullable,  -- No nullability for table-level comments
+    NULL AS data_type,    -- No data type for table-level comments
+    obj_description(format('%s.%s', c.table_schema, c.table_name)::regclass::oid) AS table_comment,
+    NULL AS column_comment, -- No column-level comments
+    NULL AS constraint_type, -- No constraint type for table-level rows
+    NULL AS referenced_table, -- No referenced table for table-level rows
+    NULL AS referenced_column -- No referenced column for table-level rows
+FROM information_schema.tables c
+WHERE c.table_schema = 'public'
+
+UNION ALL
+
+SELECT
+    c.table_name AS table_name,
+    c.column_name AS column_name,
+    c.is_nullable AS is_nullable,
+    c.data_type AS data_type,
+    NULL AS table_comment,  -- No table-level comments for column rows
+    col_description(format('%s.%s', c.table_schema, c.table_name)::regclass::oid, c.ordinal_position::int) AS column_comment,
+    tc.constraint_type AS constraint_type,
+    rcu.table_name AS referenced_table,
+    rcu.column_name AS referenced_column
+FROM information_schema.columns c
+LEFT JOIN information_schema.key_column_usage kcu
+    ON c.table_name = kcu.table_name
+    AND c.column_name = kcu.column_name
+LEFT JOIN information_schema.table_constraints tc
+    ON tc.constraint_name = kcu.constraint_name
+    AND tc.constraint_type = 'FOREIGN KEY'
+LEFT JOIN information_schema.referential_constraints rc
+    ON rc.constraint_name = tc.constraint_name
+LEFT JOIN information_schema.key_column_usage rcu
+    ON rc.unique_constraint_name = rcu.constraint_name
+WHERE c.table_schema = 'public';
+```
+
+The query should result in the following results:
+
+columns:
+- "table_name"
+- "column_name"
+- "is_nullable"
+- "data_type"
+- "table_comment"
+- "column_comment"
+- "constraint_type"
+- "referenced_table"
+- "referenced_column"
+
+![schema result](/schema-result.png)
+
+Download the results to a CSV file:
+
+![download schema](/download-results.png)
+
+You can upload this csv and it will be processed to the JSON structure in left pane.
+
+</article>

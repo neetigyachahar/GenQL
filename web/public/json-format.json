@@ -1,0 +1,74 @@
+{
+  "type": "object",
+  "properties": {
+    "tables": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "is_nullable": {
+                  "type": "string"
+                },
+                "data_type": {
+                  "type": "string"
+                },
+                "constraint_type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "referenced_table": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "referenced_column": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        },
+        "required": [
+          "name",
+          "columns"
+        ]
+      }
+    }
+  },
+  "required": [
+    "tables"
+  ]
+}

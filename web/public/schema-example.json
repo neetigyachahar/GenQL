@@ -1,0 +1,691 @@
+{
+    "tables": [
+        {
+            "name": "departments",
+            "description": "Stores department information",
+            "columns": [
+                {
+                    "name": "department_id",
+                    "description": "Primary key for Departments table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "department_name",
+                    "description": "Name of the department",
+                    "is_nullable": "YES",
+                    "data_type": "character varying",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                }
+            ]
+        },
+        {
+            "name": "professors",
+            "description": "Stores professor information",
+            "columns": [
+                {
+                    "name": "professor_id",
+                    "description": "Primary key for Professors table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "department_id",
+                    "description": "Foreign key referencing Departments table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "departments",
+                    "referenced_column": "department_id"
+                },
+                {
+                    "name": "name",
+                    "description": "Name of the professor",
+                    "is_nullable": "YES",
+                    "data_type": "character varying",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                }
+            ]
+        },
+        {
+            "name": "students",
+            "description": "Stores student information",
+            "columns": [
+                {
+                    "name": "student_id",
+                    "description": "Primary key for Students table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "department_id",
+                    "description": "Foreign key referencing Departments table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "departments",
+                    "referenced_column": "department_id"
+                },
+                {
+                    "name": "major_id",
+                    "description": "Foreign key referencing Majors table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "majors",
+                    "referenced_column": "major_id"
+                },
+                {
+                    "name": "minor_id",
+                    "description": "Foreign key referencing Minors table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "minors",
+                    "referenced_column": "minor_id"
+                },
+                {
+                    "name": "advisor_id",
+                    "description": "Foreign key referencing Professors table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "professors",
+                    "referenced_column": "professor_id"
+                },
+                {
+                    "name": "name",
+                    "description": "Name of the student",
+                    "is_nullable": "YES",
+                    "data_type": "character varying",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "birthdate",
+                    "description": "Birthdate of the student",
+                    "is_nullable": "YES",
+                    "data_type": "date",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                }
+            ]
+        },
+        {
+            "name": "majors",
+            "description": "Stores information about student majors",
+            "columns": [
+                {
+                    "name": "major_id",
+                    "description": "Primary key for Majors table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "major_name",
+                    "description": "Name of the major",
+                    "is_nullable": "YES",
+                    "data_type": "character varying",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                }
+            ]
+        },
+        {
+            "name": "minors",
+            "description": "Stores information about student minors",
+            "columns": [
+                {
+                    "name": "minor_id",
+                    "description": "Primary key for Minors table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "minor_name",
+                    "description": "Name of the minor",
+                    "is_nullable": "YES",
+                    "data_type": "character varying",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                }
+            ]
+        },
+        {
+            "name": "research_projects",
+            "description": "Stores information about research projects",
+            "columns": [
+                {
+                    "name": "project_id",
+                    "description": "Primary key for Research_Projects table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "department_id",
+                    "description": "Foreign key referencing Departments table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "departments",
+                    "referenced_column": "department_id"
+                },
+                {
+                    "name": "project_name",
+                    "description": "Name of the research project",
+                    "is_nullable": "YES",
+                    "data_type": "character varying",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                }
+            ]
+        },
+        {
+            "name": "enrollments",
+            "description": "Stores information about student enrollments in courses",
+            "columns": [
+                {
+                    "name": "enrollment_id",
+                    "description": "Primary key for Enrollments table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "student_id",
+                    "description": "Foreign key referencing Students table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "students",
+                    "referenced_column": "student_id"
+                },
+                {
+                    "name": "course_id",
+                    "description": "Foreign key referencing Courses table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "courses",
+                    "referenced_column": "course_id"
+                }
+            ]
+        },
+        {
+            "name": "courses",
+            "description": "Stores course information",
+            "columns": [
+                {
+                    "name": "course_id",
+                    "description": "Primary key for Courses table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "credits",
+                    "description": "Number of credits for the course",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "course_name",
+                    "description": "Name of the course",
+                    "is_nullable": "YES",
+                    "data_type": "character varying",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                }
+            ]
+        },
+        {
+            "name": "course_professors",
+            "description": "Stores information about which professors teach which courses",
+            "columns": [
+                {
+                    "name": "course_professor_id",
+                    "description": "Primary key for Course_Professors table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "course_id",
+                    "description": "Foreign key referencing Courses table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "courses",
+                    "referenced_column": "course_id"
+                },
+                {
+                    "name": "professor_id",
+                    "description": "Foreign key referencing Professors table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "professors",
+                    "referenced_column": "professor_id"
+                }
+            ]
+        },
+        {
+            "name": "schedules",
+            "description": "Stores schedule information for courses",
+            "columns": [
+                {
+                    "name": "schedule_id",
+                    "description": "Primary key for Schedules table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "course_id",
+                    "description": "Foreign key referencing Courses table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "courses",
+                    "referenced_column": "course_id"
+                },
+                {
+                    "name": "classroom_id",
+                    "description": "Foreign key referencing Classrooms table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "classrooms",
+                    "referenced_column": "classroom_id"
+                },
+                {
+                    "name": "time_slot",
+                    "description": "Time slot for the course",
+                    "is_nullable": "YES",
+                    "data_type": "character varying",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                }
+            ]
+        },
+        {
+            "name": "classrooms",
+            "description": "Stores classroom information",
+            "columns": [
+                {
+                    "name": "classroom_id",
+                    "description": "Primary key for Classrooms table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "room_number",
+                    "description": "Room number of the classroom",
+                    "is_nullable": "YES",
+                    "data_type": "character varying",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "building",
+                    "description": "Building where the classroom is located",
+                    "is_nullable": "YES",
+                    "data_type": "character varying",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                }
+            ]
+        },
+        {
+            "name": "grades",
+            "description": "Stores grades for students in courses",
+            "columns": [
+                {
+                    "name": "grade_id",
+                    "description": "Primary key for Grades table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "student_id",
+                    "description": "Foreign key referencing Students table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "students",
+                    "referenced_column": "student_id"
+                },
+                {
+                    "name": "course_id",
+                    "description": "Foreign key referencing Courses table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "courses",
+                    "referenced_column": "course_id"
+                },
+                {
+                    "name": "grade",
+                    "description": "Grade received by the student",
+                    "is_nullable": "YES",
+                    "data_type": "character",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                }
+            ]
+        },
+        {
+            "name": "advisors",
+            "description": "Stores information about which professors are advisors to which students",
+            "columns": [
+                {
+                    "name": "advisor_id",
+                    "description": "Primary key for Advisors table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "professor_id",
+                    "description": "Foreign key referencing Professors table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "professors",
+                    "referenced_column": "professor_id"
+                },
+                {
+                    "name": "student_id",
+                    "description": "Foreign key referencing Students table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "students",
+                    "referenced_column": "student_id"
+                }
+            ]
+        },
+        {
+            "name": "prerequisites",
+            "description": "Stores information about course prerequisites",
+            "columns": [
+                {
+                    "name": "prerequisite_id",
+                    "description": "Primary key for Prerequisites table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "course_id",
+                    "description": "Foreign key referencing Courses table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "courses",
+                    "referenced_column": "course_id"
+                },
+                {
+                    "name": "prerequisite_course_id",
+                    "description": "Foreign key referencing Courses table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "courses",
+                    "referenced_column": "course_id"
+                }
+            ]
+        },
+        {
+            "name": "departments_courses",
+            "description": "Stores information about which courses belong to which departments",
+            "columns": [
+                {
+                    "name": "department_course_id",
+                    "description": "Primary key for Departments_Courses table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "department_id",
+                    "description": "Foreign key referencing Departments table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "departments",
+                    "referenced_column": "department_id"
+                },
+                {
+                    "name": "course_id",
+                    "description": "Foreign key referencing Courses table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "courses",
+                    "referenced_column": "course_id"
+                }
+            ]
+        },
+        {
+            "name": "project_students",
+            "description": "Stores information about which students are involved in which research projects",
+            "columns": [
+                {
+                    "name": "project_student_id",
+                    "description": "Primary key for Project_Students table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "project_id",
+                    "description": "Foreign key referencing Research_Projects table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "research_projects",
+                    "referenced_column": "project_id"
+                },
+                {
+                    "name": "student_id",
+                    "description": "Foreign key referencing Students table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "students",
+                    "referenced_column": "student_id"
+                }
+            ]
+        },
+        {
+            "name": "project_professors",
+            "description": "Stores information about which professors are involved in which research projects",
+            "columns": [
+                {
+                    "name": "project_professor_id",
+                    "description": "Primary key for Project_Professors table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "project_id",
+                    "description": "Foreign key referencing Research_Projects table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "research_projects",
+                    "referenced_column": "project_id"
+                },
+                {
+                    "name": "professor_id",
+                    "description": "Foreign key referencing Professors table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "professors",
+                    "referenced_column": "professor_id"
+                }
+            ]
+        },
+        {
+            "name": "clubs",
+            "description": "Stores information about student clubs",
+            "columns": [
+                {
+                    "name": "club_id",
+                    "description": "Primary key for Clubs table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "club_name",
+                    "description": "Name of the club",
+                    "is_nullable": "YES",
+                    "data_type": "character varying",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                }
+            ]
+        },
+        {
+            "name": "club_members",
+            "description": "Stores information about which students are members of which clubs",
+            "columns": [
+                {
+                    "name": "club_member_id",
+                    "description": "Primary key for Club_Members table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "club_id",
+                    "description": "Foreign key referencing Clubs table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "clubs",
+                    "referenced_column": "club_id"
+                },
+                {
+                    "name": "student_id",
+                    "description": "Foreign key referencing Students table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "students",
+                    "referenced_column": "student_id"
+                }
+            ]
+        },
+        {
+            "name": "events",
+            "description": "Stores information about events organized by clubs",
+            "columns": [
+                {
+                    "name": "event_id",
+                    "description": "Primary key for Events table",
+                    "is_nullable": "NO",
+                    "data_type": "integer",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "club_id",
+                    "description": "Foreign key referencing Clubs table",
+                    "is_nullable": "YES",
+                    "data_type": "integer",
+                    "constraint_type": "FOREIGN KEY",
+                    "referenced_table": "clubs",
+                    "referenced_column": "club_id"
+                },
+                {
+                    "name": "event_date",
+                    "description": "Date of the event",
+                    "is_nullable": "YES",
+                    "data_type": "date",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                },
+                {
+                    "name": "event_name",
+                    "description": "Name of the event",
+                    "is_nullable": "YES",
+                    "data_type": "character varying",
+                    "constraint_type": null,
+                    "referenced_table": null,
+                    "referenced_column": null
+                }
+            ]
+        }
+    ]
+}

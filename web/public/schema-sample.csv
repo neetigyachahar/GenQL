@@ -1,0 +1,84 @@
+"table_name","column_name","is_nullable","data_type","table_comment","column_comment","constraint_type","referenced_table","referenced_column"
+"departments",NULL,NULL,NULL,"Stores department information",NULL,NULL,NULL,NULL
+"professors",NULL,NULL,NULL,"Stores professor information",NULL,NULL,NULL,NULL
+"students",NULL,NULL,NULL,"Stores student information",NULL,NULL,NULL,NULL
+"majors",NULL,NULL,NULL,"Stores information about student majors",NULL,NULL,NULL,NULL
+"minors",NULL,NULL,NULL,"Stores information about student minors",NULL,NULL,NULL,NULL
+"research_projects",NULL,NULL,NULL,"Stores information about research projects",NULL,NULL,NULL,NULL
+"enrollments",NULL,NULL,NULL,"Stores information about student enrollments in courses",NULL,NULL,NULL,NULL
+"courses",NULL,NULL,NULL,"Stores course information",NULL,NULL,NULL,NULL
+"course_professors",NULL,NULL,NULL,"Stores information about which professors teach which courses",NULL,NULL,NULL,NULL
+"schedules",NULL,NULL,NULL,"Stores schedule information for courses",NULL,NULL,NULL,NULL
+"classrooms",NULL,NULL,NULL,"Stores classroom information",NULL,NULL,NULL,NULL
+"grades",NULL,NULL,NULL,"Stores grades for students in courses",NULL,NULL,NULL,NULL
+"advisors",NULL,NULL,NULL,"Stores information about which professors are advisors to which students",NULL,NULL,NULL,NULL
+"prerequisites",NULL,NULL,NULL,"Stores information about course prerequisites",NULL,NULL,NULL,NULL
+"departments_courses",NULL,NULL,NULL,"Stores information about which courses belong to which departments",NULL,NULL,NULL,NULL
+"project_students",NULL,NULL,NULL,"Stores information about which students are involved in which research projects",NULL,NULL,NULL,NULL
+"project_professors",NULL,NULL,NULL,"Stores information about which professors are involved in which research projects",NULL,NULL,NULL,NULL
+"clubs",NULL,NULL,NULL,"Stores information about student clubs",NULL,NULL,NULL,NULL
+"club_members",NULL,NULL,NULL,"Stores information about which students are members of which clubs",NULL,NULL,NULL,NULL
+"events",NULL,NULL,NULL,"Stores information about events organized by clubs",NULL,NULL,NULL,NULL
+"departments","department_id","NO","integer",NULL,"Primary key for Departments table",NULL,NULL,NULL
+"majors","major_id","NO","integer",NULL,"Primary key for Majors table",NULL,NULL,NULL
+"minors","minor_id","NO","integer",NULL,"Primary key for Minors table",NULL,NULL,NULL
+"professors","professor_id","NO","integer",NULL,"Primary key for Professors table",NULL,NULL,NULL
+"professors","department_id","YES","integer",NULL,"Foreign key referencing Departments table","FOREIGN KEY","departments","department_id"
+"students","student_id","NO","integer",NULL,"Primary key for Students table",NULL,NULL,NULL
+"students","department_id","YES","integer",NULL,"Foreign key referencing Departments table","FOREIGN KEY","departments","department_id"
+"students","major_id","YES","integer",NULL,"Foreign key referencing Majors table","FOREIGN KEY","majors","major_id"
+"students","minor_id","YES","integer",NULL,"Foreign key referencing Minors table","FOREIGN KEY","minors","minor_id"
+"students","advisor_id","YES","integer",NULL,"Foreign key referencing Professors table","FOREIGN KEY","professors","professor_id"
+"courses","course_id","NO","integer",NULL,"Primary key for Courses table",NULL,NULL,NULL
+"classrooms","classroom_id","NO","integer",NULL,"Primary key for Classrooms table",NULL,NULL,NULL
+"research_projects","project_id","NO","integer",NULL,"Primary key for Research_Projects table",NULL,NULL,NULL
+"research_projects","department_id","YES","integer",NULL,"Foreign key referencing Departments table","FOREIGN KEY","departments","department_id"
+"clubs","club_id","NO","integer",NULL,"Primary key for Clubs table",NULL,NULL,NULL
+"enrollments","enrollment_id","NO","integer",NULL,"Primary key for Enrollments table",NULL,NULL,NULL
+"enrollments","student_id","YES","integer",NULL,"Foreign key referencing Students table","FOREIGN KEY","students","student_id"
+"enrollments","course_id","YES","integer",NULL,"Foreign key referencing Courses table","FOREIGN KEY","courses","course_id"
+"course_professors","course_professor_id","NO","integer",NULL,"Primary key for Course_Professors table",NULL,NULL,NULL
+"course_professors","course_id","YES","integer",NULL,"Foreign key referencing Courses table","FOREIGN KEY","courses","course_id"
+"course_professors","professor_id","YES","integer",NULL,"Foreign key referencing Professors table","FOREIGN KEY","professors","professor_id"
+"schedules","schedule_id","NO","integer",NULL,"Primary key for Schedules table",NULL,NULL,NULL
+"schedules","course_id","YES","integer",NULL,"Foreign key referencing Courses table","FOREIGN KEY","courses","course_id"
+"schedules","classroom_id","YES","integer",NULL,"Foreign key referencing Classrooms table","FOREIGN KEY","classrooms","classroom_id"
+"grades","grade_id","NO","integer",NULL,"Primary key for Grades table",NULL,NULL,NULL
+"grades","student_id","YES","integer",NULL,"Foreign key referencing Students table","FOREIGN KEY","students","student_id"
+"grades","course_id","YES","integer",NULL,"Foreign key referencing Courses table","FOREIGN KEY","courses","course_id"
+"advisors","advisor_id","NO","integer",NULL,"Primary key for Advisors table",NULL,NULL,NULL
+"advisors","professor_id","YES","integer",NULL,"Foreign key referencing Professors table","FOREIGN KEY","professors","professor_id"
+"advisors","student_id","YES","integer",NULL,"Foreign key referencing Students table","FOREIGN KEY","students","student_id"
+"prerequisites","prerequisite_id","NO","integer",NULL,"Primary key for Prerequisites table",NULL,NULL,NULL
+"prerequisites","course_id","YES","integer",NULL,"Foreign key referencing Courses table","FOREIGN KEY","courses","course_id"
+"prerequisites","prerequisite_course_id","YES","integer",NULL,"Foreign key referencing Courses table","FOREIGN KEY","courses","course_id"
+"departments_courses","department_course_id","NO","integer",NULL,"Primary key for Departments_Courses table",NULL,NULL,NULL
+"departments_courses","department_id","YES","integer",NULL,"Foreign key referencing Departments table","FOREIGN KEY","departments","department_id"
+"departments_courses","course_id","YES","integer",NULL,"Foreign key referencing Courses table","FOREIGN KEY","courses","course_id"
+"project_students","project_student_id","NO","integer",NULL,"Primary key for Project_Students table",NULL,NULL,NULL
+"project_students","project_id","YES","integer",NULL,"Foreign key referencing Research_Projects table","FOREIGN KEY","research_projects","project_id"
+"project_students","student_id","YES","integer",NULL,"Foreign key referencing Students table","FOREIGN KEY","students","student_id"
+"project_professors","project_professor_id","NO","integer",NULL,"Primary key for Project_Professors table",NULL,NULL,NULL
+"project_professors","project_id","YES","integer",NULL,"Foreign key referencing Research_Projects table","FOREIGN KEY","research_projects","project_id"
+"project_professors","professor_id","YES","integer",NULL,"Foreign key referencing Professors table","FOREIGN KEY","professors","professor_id"
+"club_members","club_member_id","NO","integer",NULL,"Primary key for Club_Members table",NULL,NULL,NULL
+"club_members","club_id","YES","integer",NULL,"Foreign key referencing Clubs table","FOREIGN KEY","clubs","club_id"
+"club_members","student_id","YES","integer",NULL,"Foreign key referencing Students table","FOREIGN KEY","students","student_id"
+"events","event_id","NO","integer",NULL,"Primary key for Events table",NULL,NULL,NULL
+"events","club_id","YES","integer",NULL,"Foreign key referencing Clubs table","FOREIGN KEY","clubs","club_id"
+"minors","minor_name","YES","character varying",NULL,"Name of the minor",NULL,NULL,NULL
+"classrooms","room_number","YES","character varying",NULL,"Room number of the classroom",NULL,NULL,NULL
+"research_projects","project_name","YES","character varying",NULL,"Name of the research project",NULL,NULL,NULL
+"grades","grade","YES","character",NULL,"Grade received by the student",NULL,NULL,NULL
+"clubs","club_name","YES","character varying",NULL,"Name of the club",NULL,NULL,NULL
+"students","name","YES","character varying",NULL,"Name of the student",NULL,NULL,NULL
+"departments","department_name","YES","character varying",NULL,"Name of the department",NULL,NULL,NULL
+"majors","major_name","YES","character varying",NULL,"Name of the major",NULL,NULL,NULL
+"courses","credits","YES","integer",NULL,"Number of credits for the course",NULL,NULL,NULL
+"courses","course_name","YES","character varying",NULL,"Name of the course",NULL,NULL,NULL
+"students","birthdate","YES","date",NULL,"Birthdate of the student",NULL,NULL,NULL
+"schedules","time_slot","YES","character varying",NULL,"Time slot for the course",NULL,NULL,NULL
+"events","event_date","YES","date",NULL,"Date of the event",NULL,NULL,NULL
+"classrooms","building","YES","character varying",NULL,"Building where the classroom is located",NULL,NULL,NULL
+"professors","name","YES","character varying",NULL,"Name of the professor",NULL,NULL,NULL
+"events","event_name","YES","character varying",NULL,"Name of the event",NULL,NULL,NULL
