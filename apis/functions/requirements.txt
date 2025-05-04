@@ -1,0 +1,4 @@
+firebase_functions~=0.1.0
+jsonschema~=4.23.0
+openai~=1.58.1
+pinecone-client~=5.0.1

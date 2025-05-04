@@ -1,1 +1,4 @@
-apis/
+apis/functions/venv
+apis/functions/__pycache__
+apis/functions/ai/__pycache__
+apis/functions/validations/__pycache__
